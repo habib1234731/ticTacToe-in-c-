@@ -190,13 +190,19 @@ namespace TicTacToe
 
         private static int getField()
         {
-            int input = int.Parse(Console.ReadLine());
-            while(input < 1 || input > 9)
-            {
-                Console.WriteLine("Invalid input, enter a number " +
-                    "between 1-9");
-                input = int.Parse(Console.ReadLine());
-            }
+            int input = -1; bool flag = false;
+
+            do {
+                try {
+                    input = int.Parse(Console.ReadLine());
+                } catch {
+                    Console.WriteLine("Invalid input, enter a number " +
+                        "between 1-9");
+                } 
+                if (input < 1 || input > 9) continue;
+                else flag = true;
+            } while (!flag);
+
             return input;
         }
 
